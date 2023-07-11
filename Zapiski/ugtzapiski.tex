@@ -571,7 +571,11 @@ Označimo interval $I = [0, 1]$ in si oglejmo nekaj naravnih kvocientov kvadrata
   Na $B^2$ imamo ekvivalenčno relacijo, v kateri je edini netrivialni ekvivalenčni razred $S^1$:
     to lahko označimo kot $\quot{B^2}{S^1}$ in že intuitivno se zdi, da je ta prostor homeomorfen $S^2$.
     Možen predpis za kvocientno preslikavo $f: B^2 \to S^2$ bi bil
-    $f(\vb{x}) = ((2 \sqrt{1 - \|\vb{x}\|^2}) \vb{x}, 2\|\vb{x}\|^2 - 1)$.
+    $$f(\vb{x}) = \begin{cases}
+        ((2 \sqrt{1 - \|\vb{x}\|^2}) \frac{\vb{x}}{\|\vb{x}\|}, 2\|\vb{x}\|^2 - 1);\, \vb{x} \neq \vb{0} \\
+        (\vb{0}, -1);\, \vb{x} = \vb{0}
+    \end{cases}
+    $$.
     \begin{center}
       \includegraphics[scale=0.4]{zgled4.png}
     \end{center}
@@ -668,7 +672,7 @@ Označimo interval $I = [0, 1]$ in si oglejmo nekaj naravnih kvocientov kvadrata
     Komponente $f^{-1} (V)$ so odprte v $X$, naj bo $W$ ena izmed teh komponent:
     $$f(W) \subseteq V \Rightarrow \exists \lambda_0 : f(W) \subseteq V_{\lambda_0} \Rightarrow W \subseteq f^{-1}(V_{\lambda_0}).$$
     Potem je $f^{-1} (V_\lambda)$ unija nekaj (odprtih) komponent množice $f^{-1} (V)$, zato je 
-    $f^{-1} (V_\lambda)$ odprta v $X$ in ker je $f$ kvocientna, je $V_\lambda$ kvocientna v $Y$.
+    $f^{-1} (V_\lambda)$ odprta v $X$ in ker je $f$ kvocientna, je $V_\lambda$ odprta v $Y$.
     
     \item Za razne topološke lastnosti podamo kar konkretne protiprimere.
     Za Hausdorffovo lastnost vzemimo $T_2$ prostor $X = \R \times \{0, 1\}$ z ekvivalenčno 
@@ -974,7 +978,7 @@ Naj bosta $X$ in $Y$ topološka prostora $A \subseteq X$ in $f: A \to Y$.
   \begin{itemize}
     \item Če je $A \subseteq X$, potem je $\quot{X}{A}$ zlepek za preslikavo 
     $f: A \to Y = \{*\}$, torej je v tem primeru $X \cup_f Y \cong \quot{X}{A}$.
-    \item Če je $f: S^{n + 1} \to S^n$ homeomorfizem, potem je $B^n \cup_f B^n \cong S^n$.
+    \item Če je $f: S^{n-1} \to S^{n-1}$ homeomorfizem, potem je $B^n \cup_f B^n \cong S^n$.
     \item Preslikavni valj preslikave $f: X \to Y$ je zlepek $X \times I$ in $Y$,
     ki $X \times \{0\}$ z $f$ prilepi na $Y$.
   \end{itemize}
@@ -1056,7 +1060,7 @@ Naj bosta $X$ in $Y$ topološka prostora $A \subseteq X$ in $f: A \to Y$.
   Torej imamo podano števno družino odprtih množic v $Z$ s predpisom 
   \begin{align*}
     \mathcal{B} &= \{q(U_n')\ |\ U_n' \in \mathcal{B}_X,\ U_n' \cap A = \emptyset\}\\
-    &\cup \{q(V_m')\ |\ V_m' \in \mathcal{B}_Y,\ V_m' \cap A = \emptyset\}\\
+    &\cup \{q(V_m')\ |\ V_m' \in \mathcal{B}_Y,\ V_m' \cap f(A) = \emptyset\}\\
     &\cup \{q({W_{n, m} }^{X} \sqcup {W_{n, m} }^{Y})\ |\ W_{n, m} \neq \emptyset\}.
   \end{align*}
   Dokazati moramo še, da je $\mathcal{B}$ tudi baza.
@@ -1065,11 +1069,11 @@ Naj bosta $X$ in $Y$ topološka prostora $A \subseteq X$ in $f: A \to Y$.
   Vemo, da je $$q^{-1} (z) \subseteq q^{-1} (O)^{\ \text{odp}} \subseteq X \sqcup Y.$$
   Če je $z \notin q(A)$, potem je bodisi $q^{-1} (z) \in X \setminus A$ ali pa $Y \setminus f(A)$.
   Dovolj je, če se omejimo na prvi primer; tedaj je $z \in q^{-1} (O) \cap (X \setminus A)^{\ \text{odp}} \subseteq X$.
-  Potem pa že obstaja $U_n \in \mathcal{B}_X$, da je $q^{-1}(z) \in U_n \subseteq q^{-1} (O) \cap X$.
-  Če pa je $z = [a] = [f(a)]$ za nek $a \in A$, potem je ponovno 
+  Potem pa že obstaja $U_n \in \mathcal{B}_X$, da je $q^{-1}(z) \in U_n \subseteq q^{-1} (O) \cap (X \setminus A)$.
+  Če pa je $z = [a] = [f(a)]$ za nek $a \in A$, potem je 
   $a \in q^{-1} (O) \cap X^{\ \text{odp}}$ in zato obstaja nek $U_n$,
   da je $a \in U_n \subseteq q^{-1} (O) \cap X$. Po enakem premisleku obstaja $V_m$,
-  da je $f(a) \in V_m \subseteq q^{-1} (O) \cap Y$.
+  da je $f(a) \in V_m \subseteq q^{-1} (O) \cap Y$. Vemo tudi, da $W_{n,m} = U_n \cap A \cap f^{-1}(V_m) \neq \emptyset$.
   Torej je $$z = [a] \in q({W_{n, m} }^X \sqcup {W_{n, m} }^Y) \subseteq O$$
   in smo končali.
   \begin{center}
@@ -1109,7 +1113,7 @@ Formalno pa to definiramo na naslednji način.
 
 \begin{trditev}
   $\F P^n$ je homogen prostor: za poljubni točki $u, v \in \F P^n$
-  obstaja homeomorfizem $h: \F P^n \to \F$, tako da je $h(u) = v$.
+  obstaja homeomorfizem $h: \F P^n \to \F P^n$, tako da je $h(u) = v$.
 \end{trditev}
 
 \begin{dokaz}
@@ -1142,7 +1146,7 @@ homeomorfizem in
 \begin{zgled}
   Navedimo nekaj trivialnih primerov projektivnih prostorov.
   \begin{itemize}
-    \item $\F P^0 = \quot{\F^1 \setminus \{0\}}{\F^*} = {\F^*}{\F^*} = \{a\}$.
+    \item $\F P^0 = \quot{\F^1 \setminus \{0\}}{\F^*} = \quot{\F^*}{\F^*} = \{a\}$.
     \item $\F P^1 = \quot{\F^2 \setminus \{0\}}{\F^*}$, tako dobimo $\R P \cong S^1$, $\C P \cong S^2$ in $\Ha P \cong S^4$.
     \item $\R P^2$ je tudi ploskev, ki pa morda v nasprotju za našimi pričakovanji 
     ni homoemorfen prostoru $S^2$.
@@ -1491,7 +1495,7 @@ Naslednji izjavi pravimo Brouwerjev izrek o negibni točki.
   Vemo že, da to ne velja za primer $n = 1$, saj $S^0 = \{-1, 1\}$ ni retrakt $B^1 = [-1, 1]$.
   Tudi v primeru $n = 2$ se intuitivno zdi, da če bi obstajal retrakt $r: B^2 \to S^1$, 
   bi se disk $B^2$ moral vmes nekje pretrgati.
-  Vsekakor pa lahko prebodan disk retraktiramo na $S^1$, in sicer z retrakcijo $r = \frac{x}{\|x\|}$.
+  Vsekakor pa lahko preboden disk retraktiramo na $S^1$, in sicer z retrakcijo $r = \frac{x}{\|x\|}$.
 \end{zgled}
 
 Za tretjo ekvivalentno formulacijo Brouwerjevega izreka potrebujemo pojem homotopije, torej zvezne deformacije
@@ -1662,7 +1666,7 @@ Od tod vidimo, da je ovojno število krivulje celo število.
 
 \begin{zgled}
   Naj bo $n \in \Z$ ter $g_n : S^1 \to \C$ podana z $g_n(z) = z^n$.
-  V skledu z dogovorom izberemo parametrizacijo $\gamma_n(t) = e^{2 n \pi i t}$.
+  V skladu z dogovorom izberemo parametrizacijo $\gamma_n(t) = e^{2 n \pi i t}$.
   Potem je $\gamma_n '(t) = 2 n \pi i \gamma_n (t)$, zato je 
   $$w (g_n) = \int_0 ^1 n\, dt = n.$$
   Od tod tudi sledi, da je ovojno število identične preslikave enako 1.
@@ -1806,7 +1810,7 @@ $\varphi(A)$ deli $X$?
 \end{opomba}
 
 \begin{izrek}[Jordan-Brouwer]
-  Naj bo $r \geq 2$ in $S \subseteq \R^n$ topološka $(n-1)$-sfera, 
+  Naj bo $n \geq 2$ in $S \subseteq \R^n$ topološka $(n-1)$-sfera, 
   torej $S \cong S^{n - 1}$. Potem ima $\R^n \setminus S$ dve komponenti, 
   od tega eno omejena in eno neomejeno, ki sta odprti v $\R^n$, povezani s potmi in je $S$ meja obeh komponent.
 \end{izrek}
@@ -1849,7 +1853,7 @@ Za dokaz Jordan-Brouwerja moramo še dokazati, da velja:
   Za višje dimenzije se to da lažje dokazati z orodji algebraične topologije.
 \end{opomba}
 
-Prvo točko dokazujemo ob privzetku, da ima komplement vsaj dve komponenti (da je temu res tako, se bomo prepričalu v dokazu druge točke).
+Prvo točko dokazujemo ob privzetku, da ima komplement vsaj dve komponenti (da je temu res tako, se bomo prepričali v dokazu druge točke).
 
 \begin{izrek}[Trditev $\mathbf{D_n}$]
   Naj bo $D \subseteq \R^n$ topološki $k$-disk, torej $D \cong B^k$ za $0 \leq k \leq n$ in $n \geq 2$.
@@ -1857,17 +1861,17 @@ Prvo točko dokazujemo ob privzetku, da ima komplement vsaj dve komponenti (da j
 \end{izrek}
 
 \begin{dokaz}
-  Pokazali bomo, da $\mathbf{D_n}$ sledi iz $\mathbf{B_n}$. Denimo torej, da obstaja omejena komponenta $V$ prostora $\R^n \setminus D$.
+  Pokazali bomo implikacijo $\mathbf{B_n} \Rightarrow \mathbf{D_n}$ oziroma ekvivalentno $\overline{\mathbf{D_n}} \Rightarrow \overline{\mathbf{B_n}}$. Denimo torej, da obstaja omejena komponenta $V$ prostora $\R^n \setminus D$.
   Izberemo $v \in V$ in $R > 0$, da je $D \cup V \subseteq K(v, R)$. Poiskati želimo retrakcijo $\overline{K(v, R)}$ v robno 
   sfero $S(v, R)$. Po predpostavki je 
   $$\mathcal{N} \ni D \cong B^k \cong I^k \in AE(\mathcal{N}),$$
   zato je $D \in AR(\mathcal{N})$. Ker je $D^{\ \text{zap}} \subseteq D \cup V \in \mathcal{N}$, obstaja retrakcija 
-  $r: D \cup V \to D$. Definirajmo funkcijo $f: R^n \to \R^n \setminus V$ s predpisom 
+  $r: D \cup V \to D$. Definirajmo funkcijo $f: \overline{K(v, R)} \to \overline{K(v, R)} \setminus V$ s predpisom 
   $$f(x) = \begin{cases}
     r(x) ;& x \in D \cup V^{\ \text{zap}} \subseteq \R^n\\
-    x ;& x \in \R^n \setminus V^{\ \text{zap}} \subseteq \R^n
+    x ;& x \in \overline{K(v, R)} \setminus V^{\ \text{zap}} \subseteq \R^n
   \end{cases},$$
-  kjer smo uporabili dejstvo, da je $$\overline{D \cup V} = \overline{D} \cup \overline{V} \subseteq D \cup (V \cup D) = V \cup D$$
+  kjer smo uporabili dejstvo iz prejšnje leme, da je $$\overline{D \cup V} = \overline{D} \cup \overline{V} \subseteq D \cup (V \cup D) = V \cup D$$
   in je zato $D \cup V$ zaprta. Ker sta oba predpisa zvezna in se ujemata na preseku zaprtih množic,
   je $f$ zvezna. Potem je kompozitum $\rho \circ f: \overline{K(v, R)} \to S(v, R)$, kjer je 
   $$\rho: \R^n \setminus \{v\} \to S(v, R),\quad \rho (x) = R \frac{x - v}{\|x - v\|} + v$$
@@ -1922,8 +1926,8 @@ Da ima $\R^n \setminus S$ res natanko dve komponenti, dokazujemo za posebni prim
   $$f(s, t) := \frac{(v_1 (t) - h_1 (s), h_2 (s) - v_2 (t))}{D(s, t)}.$$
   Trdimo, da ta preslikava nima negibne točke. Res, ker je ena od komponent $f$ vedno enaka $\pm 1$, 
   potem $f$ slika v rob kvadrata. Če ima $f$ torej negibno točko, mora ta biti oblike 
-  $$(1, t),\quad (-1, t),\quad (t, 1),\quad (t, -1).$$
-  Hitro lahko prverimo, da te točke niso negibne, torej smo izpeljali protislovje z izjavo $\mathbf{A_n}$.
+  $$(1, t),\quad (-1, t),\quad (s, 1),\quad (s, -1).$$
+  Hitro lahko preverimo, da te točke niso negibne, torej smo izpeljali protislovje z izjavo $\mathbf{A_n}$.
 \end{dokaz}
 
 \begin{trditev}
@@ -1941,7 +1945,7 @@ Da ima $\R^n \setminus S$ res natanko dve komponenti, dokazujemo za posebni prim
     \includegraphics[scale=0.8]{dokaz5.png}
   \end{center}
   Po prejšnji lemi oba loka $S$ sekata daljico $\overline{BT}$.
-  Naj bo $M_T$ najvičja točka v preseku $S \cap \overline{BT}$ in označimo s $S_T$ podlok od $A$ do $A'$,
+  Naj bo $M_T$ najvišja točka v preseku $S \cap \overline{BT}$ in označimo s $S_T$ podlok od $A$ do $A'$,
   ki vsebuje $M_T$. Podobno naj bo $m_T$ najnižja točka v $S_T \cap \overline{BT}$. Nato označimo 
   s $S_B$ drugi podlok od $A$ do $A'$ v $S$. Trdimo, da $S_B$ seka $\overline{BT}$ pod $m_T$.
   Sicer vodoravna pot $S_B$ ne bi sekala navpične poti s tirom 
@@ -1963,7 +1967,7 @@ Da ima $\R^n \setminus S$ res natanko dve komponenti, dokazujemo za posebni prim
   Naj bo $r > 0$ tako majhen, da $K(A, r)$ in $K(A', r)$ ne sekata tira $\gamma_1$.
   Ker sta $A, A'$ vsebovana v meji od $V$, potem obstaja $A_1 \in K(A, r) \cap V'$ in 
   $A_1 ' \in K(A_1, r) \cap V'$. Potem pa vodoravna pot s tirom 
-  $$\overline{A A_1} \cup \text{(pot v $V'$ od $A_1$ do $A_1'$)} \cup \overline{A_1 A}$$
+  $$\overline{A A_1} \cup \text{(pot v $V'$ od $A_1$ do $A_1'$)} \cup \overline{A_1' A'}$$
   ne seka tira $\gamma_1$ in smo prišli v protislovje.
 \end{dokaz}
 
@@ -2018,11 +2022,9 @@ da je $S$ mogoče v okolici vsake točke nekonstantno zravnati.
     \item Naj bo $S^{n - 1} \cong S \subseteq \R^n$ in $x \in S$. Sfera $S$ je lokalno ploščata ali krotka v točki $x$,
   če obstaja okolica $U \subseteq \R^n$ za $x$ in homeomorfizem $h : U \to W^{\ \text{odp}} \subseteq \R^n$,
   da je $h(S \cap U) = W \cap (\R^{n - 1} \times \{0\})$.
-  $S$ je lokalno ploščata ali podmnogoterost, če je lokalno ploščata v vsaki svoji točki.
-    \item Naj bo $S^{n - 1} \cong S \subseteq \R^n$ in $x \in S$. Sfera $S$ je lokalno ploščata ali krotka v točki $x$,
-  če obstaja okolica $U \subseteq S^n$ za $x$ in homeomorfizem $h : U \to W^{\ \text{odp}} \subseteq \R^n$,
-  da je $h(S \cap U) = W \cap (\R^{n - 1} \times \{0\})$.
-  $S$ je lokalno ploščata ali podmnogoterost, če je lokalno ploščata v vsaki svoji točki.
+    \item $S$ je lokalno ploščata ali podmnogoterost v $\R^n$, če je lokalno ploščata v vsaki svoji točki.
+    \item Točkam, v katerih $S$ ni lokalno ploščata, rečemo divje točke.
+  
   \end{itemize}
 \end{definicija}
 
@@ -2047,7 +2049,7 @@ V splošnem pa zvezna preslikava (ne nujno surjektivna) lahko spremeni dimenzijo
   Oglejmo si nekaj primerov zveznih preslikav, ki ne ohranijo dimenzije prostora.
   \begin{itemize}
     \item Projekcija na prvi faktor iz $\R^2$ v $\R$.
-    \item Prostor zapolnjujoče krivulje (Hilbertova, Peanova) iz $I^2$ v $I$.
+    \item Prostor zapolnjujoče krivulje (Hilbertova, Peanova) iz $I$ v $I^2$.
     \item Prejšnji primer lahko posplošimo na poljubno dimenzijo. Po izreku Aleksandrova obstaja zvezna surjekcija 
     $f: C\to I^n$ in ker je $C^{\ \text{zap}} \subseteq I$, lahko $f$ razširimo na zvezno surjekcijo $f: I \to I^n$.
   \end{itemize}
@@ -2060,7 +2062,7 @@ V splošnem pa zvezna preslikava (ne nujno surjektivna) lahko spremeni dimenzijo
 
 \begin{dokaz}
   Izberimo poljubno $W^{\ \text{odp}} \subseteq U$ in $y \in f(W)$. Dokazujemo, da ima $y$ odprto okolico v $\R^n$,
-  vsebovano v $f(W)$. Naj bo $x \in f^{-1}(\{y\})$. Za $x \in W^{\ \text{odp}} \subseteq \R^n$
+  vsebovano v $f(W)$. Zaradi injektivnosti $f$ lahko definiramo $x = f^{-1}(y)$. Za $x \in W^{\ \text{odp}} \subseteq \R^n$
   obstaja $r > 0$, da je $K = \overline{K} (x, r) \subseteq W$ in torej $K \cong B^n$.
   Potem je seveda $\partial K \cong S^{n - 1}$ in $\inte K \cong \mathring{B}^n$.
   Označimo $S = f(\partial K)$ in 
@@ -2075,7 +2077,7 @@ V splošnem pa zvezna preslikava (ne nujno surjektivna) lahko spremeni dimenzijo
   Torej sta $f(\inte K)$ in $\R^n \setminus f(K)$ komponenti $\R^n \setminus S$
   in zato odprti v $\R^n$.
   Od tod pa naprej 
-  $$y = f(x) \in f(\inte K)^{\ \text{odp v $\R^n$}} \subseteq f(U)$$
+  $$y = f(x) \in f(\inte K)^{\ \text{odp v $\R^n$}} \subseteq f(W)$$
   in $y$ je notranja točka.
 \end{dokaz}
 
@@ -2121,7 +2123,7 @@ V splošnem pa zvezna preslikava (ne nujno surjektivna) lahko spremeni dimenzijo
 
 \begin{dokaz}
   Ker je ${\inte A}^{\ \text{odp}} \subseteq \R^n$, je $h(\inte A)$ tudi odprta v $\R^n$ in zato 
-  vsebovana v $B$, torej $h(\inte A) \subseteq \inte B$.
+  vsebovana v $\inte B$, torej $h(\inte A) \subseteq \inte B$.
   Obratna inkluzija za $h^{-1}$ da $h^{-1} (\inte B) \subseteq \inte A$, torej je res $h(\inte A) = \inte B$.
   Druga točka pa sledi zato, ker je $h$ bijekcija.
 \end{dokaz}
@@ -2131,7 +2133,7 @@ V splošnem pa zvezna preslikava (ne nujno surjektivna) lahko spremeni dimenzijo
 
 \subsection{Topološke mnogoterosti}
 
-Ta razdelek začnimo z intuicijo, da je mnogoterost dinmenzije $n$
+Ta razdelek začnimo z intuicijo, da je mnogoterost dimenzije $n$
 topološki prostor, ki lokalno "`izgleda"' kot $\R^n$.
 Osnovni primeri bi bile krivulje in ploskve, ki jih že poznamo iz analize.
 Vnaprej se dogovorimo za oznako $\R^n_+ := \R^{n - 1} \times [0, \infty)$
@@ -2159,7 +2161,7 @@ in $\R^{0} = \{0\}.$
 
 \begin{opomba}
   \begin{itemize}
-    \item $\R^n \cong \mathring{B}^n$, $\R^n_+ \cong \mathrm{B}^n_+ = \mathrm{B}^n \cup \R^n _+.$
+    \item $\R^n \cong \mathring{B}^n$, $\R^n_+ \cong \mathring{B}^n_+ = \mathring{B}^n \cap \R^n _+.$
     Alternativno lahko evklidske okolice definiramo kot tiste, ki so homeomorfne odprtim podmnožicam v $\R^n_+$.
     \item Vsak $x \in X$ ima bazo evklidskih okolic.
     \item V literaturi mnogoterost včasih pomeni mnogoterost brez roba.
@@ -2177,7 +2179,7 @@ in $\R^{0} = \{0\}.$
 
 \begin{zgled}
 $\R^n$ je $n$-mnogoterost brez roba, $\R^n_+$ pa $n$-mnogoterost z robom $\partial \R^n_+ = \R^{n - 1} \times \{0\}$.
-    Če bi $x \in \R^{n - 1} \times \{0\}$ namreč imal okolico $U^{\ \text{odp}}\subseteq \R^n_+$, ki je homeomorfna $\R^n$,
+    Če bi $x \in \R^{n - 1} \times \{0\}$ namreč imel okolico $U^{\ \text{odp}}\subseteq \R^n_+$, ki je homeomorfna $\R^n$,
     potem ta $V$ vsebuje $x$, zato $V$ ni odprta v $\R^n$. To pa je v nasprotju z invarianco odprtih množic.  
 \end{zgled}
   
@@ -2238,7 +2240,7 @@ z predpostavko $T_2$ da regularnost, ta pa skupaj z $2$-števnostjo implicira me
    Dokazali bomo, da je $q(V_i) \cong \F^n$ za vsak $i = 1, \dots, n + 1$.
    Brez škode za splošnost vzemimo $i = 1$ in definirajmo preslikavo $f: V_1 \to \F^n$
    s predpisom $$(x_1, x_2, \dots, x_{n+ 1}) \mapsto (x_1^{-1} x_2, x_1^{-1} x_3,\dots, x_1^{-1}x_{n + 1}).$$
-   Hkrati pa je preslikava $q\big|_{V_1}$ kvocientna, saj je zoožitev kvocientne preslikave na odprto množico.
+   Hkrati pa je preslikava $q\big|_{V_1}$ kvocientna, saj je zožitev kvocientne preslikave na odprto množico.
    \begin{center}
     \adjustbox{scale=1.5,center}{
       \begin{tikzcd}
@@ -2302,11 +2304,11 @@ Disjunktna unija (največ) števno mnogo $n$-mnogoterosti je prav tako $n$-mnogo
   $$\R^n \stackrel{\cong}{\to} U' \stackrel{f}{\to} U \cong \begin{cases}
     \R^n\\
     \R^n_+
-  \end{cases}$$
+  \end{cases} \stackrel{i}{\hookrightarrow} \R^n$$
   je zvezna in injektivna, zato je po Brouwerjevem izreku odprta.
   Njena slika je odprta podmnožica v $\R^n$,
   zato v primeru $U \cong \R^n _+$ slika ne vsebuje točk iz $\R^{n-1} \times \{0\}$.
-  To pa pomeni, da je $y$ notranja točka v $N$, $f(U')^{\ \text{odp}} \subseteq N$ in je znotraj $f(W)$.
+  To pa pomeni, da je $y$ notranja točka v $N$, $f(U')^{\ \text{odp}} \subseteq \intem N$ in je znotraj $f(W)$.
 \end{dokaz}
 
 \begin{posledica}
@@ -2338,8 +2340,8 @@ Disjunktna unija (največ) števno mnogo $n$-mnogoterosti je prav tako $n$-mnogo
 \begin{dokaz}
   Po dednosti je $\partial M$ Hausdorffov, 2-števen prostor.
   Za poljuben $x \in \partial M$ trdimo, da ima okolico, homeomorfno
-  $\R^{n - 1}$. Naj bo $W$ evklidska okolica za $x$ v $M$,
-  $h: W \to \R_+ ^n$ in $h(x) \in \R^{n - 1} \times \{0\}$.
+  $\R^{n - 1}$. Naj bo $W$ evklidska okolica za $x$ v $\partial M$,
+  $h: W \stackrel{\cong}{\to} \R_+ ^n$ in $h(x) \in \R^{n - 1} \times \{0\}$.
   Po zgornjem izreku $h: W \cap \intem M \to \R_+ ^n$ slika v $\R^{n - 1} \times (0, \infty)$,
   enako $h^{-1}: \R^{n - 1} \times (0, \infty) \to W \cap \intem M$, torej je $h(W \cap \intem M) = \R^{n - 1} \times (0, \infty)$.
   Tako smo dobili iskano karto pri $x$:
@@ -2386,7 +2388,7 @@ je obrobek del $W$, ki ustreza $\R^{n - 1} \times [0, 1]$.
     $(x, y)$ ima okolico $U_x \times V_y \cong \R^m \times \R^n \equiv \R^{m + n}$,
     zato je notranja točka.
     \item Če je $x \in \intem M$ in $y \in \partial N$, potem je $U_x \cong \R^m$ in $V_y \cong \R^n _+$
-    in $$(x, y) \in U_x \times V_y \cong \R^m \times \R^n_+ = \R^{m + n} \times [0, \infty) = R^{m + n}_+.$$
+    in $$(x, y) \in U_x \times V_y \cong \R^m \times \R^n_+ = \R^{m + n-1} \times [0, \infty) = \R^{m + n}_+.$$
     \item Če je $x \in \partial M$ in $y \in \partial N$, potem je $U_x \cong \R^m$ in $V_y \cong \R^n _+$ in 
     \begin{equation*}
       (x, y) \in U_x \times V_y \cong \R^{m + n - 2} \times [0, \infty)^2 \cong \R^{m + n - 1} \times [0, \infty) = \R^{m + n}_+ \qedhere 
@@ -2595,7 +2597,7 @@ sklenjenih ploskev in algoritem za njihovo prepoznavanje.
 \begin{zgled}
   Primeri sklenjenih ploskev, s katerimi smo se že srečali,
   so sfera $S^2$, torus $T := S^1 \times S^1$, projektivno ravnino 
-  $P := \R P^1$ in Kleinova steklenica $K$.
+  $P := \R P^2$ in Kleinova steklenica $K$.
   Iz teh pa lahko konstruiramo vedno nove ploskve.
   \begin{center}
     \includegraphics[scale=0.7]{zgled13.png}
@@ -2609,7 +2611,7 @@ pare stranic s homeomorfizmi. V primeru $n = 2$ dobimo sfero ali pa projektivno 
   \includegraphics[scale=0.7]{ploskve1.png}
 \end{center}
 V primeru $n = 3$ je razvidno, da ne dobimo sklenjene ploskve, 
-saj z leplenjem para stranic preostane ena stranica, ki postane rob kvocienta.
+saj z lepljenjem para stranic preostane ena stranica, ki postane rob kvocienta.
 Če pa skupaj zlepimo več kot dve stranici, sploh ne dobimo mnogoterosti.
 \begin{center}
   \includegraphics[scale=0.6]{ploskve2.png}
@@ -2652,15 +2654,15 @@ po kateri zlepimo večkotnik.
   \begin{center}
     \includegraphics[scale=0.7]{dokaz6.png}
   \end{center}
-  Tako nastopita dva primera: z obroženo in brez obkrožene identifikacije.
+  Tako nastopita dva primera: z obkroženo in brez obkrožene identifikacije.
   \begin{center}
     \includegraphics[scale=0.6]{dokaz7.png}
   \end{center}  
 \end{dokaz}
 
 Poliedrska ploskev $\quot{K}{\sim}$
-ima lahko več komponent. Če pa je povezana, potem pa lahko v $K = \bigsqcup U_i$
-najdemo stranico, vzdolž katerih paroma zlepimo komponente tako, da 
+ima lahko več komponent. Če pa je povezana, potem pa lahko v $K = \bigsqcup K_i$
+najdemo mnogokotnik s stranicami, vzdolž katerih paroma zlepimo komponente tako, da 
 nastane en sam mnogokotnik.
 Poliedrske ploskve bomo prepoznali s pomočjo dveh topoloških invariant -- lastnosti,
 ki se ohranjajo pri homeomorfizmih: orientabilnosti in Eulerjeve karakteristike.
@@ -2728,7 +2730,7 @@ zlepljena preko neke stranice, potem rečemo, da sta orientirana skladno,
   Naj bo $M = \quot{\left(\sqcup_{j = 1}^k K_j\right)}{\sim}$
   poliedrska ploskev, predstavljena kot kvocient disjunktne unije mnogokotnikov,
   v katerih identificiramo nekatere pare stranic s homeomorfizmi.
-  $M$ je orientabilna, če lahko orientacije mnoogokotnikov $K_j$
+  $M$ je orientabilna, če lahko orientacije mnogokotnikov $K_j$
   izbiramo tako, da so ti orientirani skladno glede na vsak identificiran par.
 \end{definicija}
 
@@ -2781,13 +2783,13 @@ Unija stranic in oglišč mnogokotnikov določa graf $\Gamma$ v $M$:
 oglišča so slike oglišč, povezave so slike stranic, lica grafa pa so slike mnogokotnikov.
 \begin{itemize}
   \item \textbf{2-celice} v $M$ so slike odprtih mnogokotnikov $K_j$ v $M$ (torej lica grafa $\Gamma$).
-  \item \textbf{1-celice} v $M$ so slike odprtih stranic mnokotnikov (torej povezave grafa $\Gamma$).
+  \item \textbf{1-celice} v $M$ so slike odprtih stranic mnogokotnikov (torej povezave grafa $\Gamma$).
   \item \textbf{0-celice} v $M$ so slike oglišč mnogokotnikov (torej vozlišča grafa $\Gamma$).
 \end{itemize}
 
 \begin{definicija}
   Eulerjeva karakteristika $M$ je definirana kot 
-  $$\chi (M) = \# (\mathrm{2-celic}) - \# (\mathrm{1-celic}) + \#(\mathrm{0-celic}).$$
+  $$\chi (M) = \# (\text{2-celic}) - \# (\text{1-celic}) + \#(\text{0-celic}).$$
 \end{definicija}
 
 \begin{trditev}

@@ -265,15 +265,15 @@
 \newcommand{\ve}[1]{\overrightarrow{#1}}
 \newcommand{\vectors}[2]{\vec{{#1}_1},\vec{{#1}_2}, \dots \vec{{#1}_{#2}}}
 \newcommand{\scalars}[2]{{#1}_1, {#1}_2, \dots, {#1}_{#2}}
-\newcommand{\im}{\mathrm{im}\,}
-\newcommand{\rang}{\mathrm{\text{rang}}\,}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rang}{rang}
 \newcommand{\isom}{\stackrel{\sim}{=}}
 \newcommand{\quot}[2]{{\raisebox{0.1em}{$#1$}\left/\raisebox{-0.2em}{$#2$}\right.}}
 \newcommand{\sprod}[2]{\left\langle {#1},{#2} \right\rangle}
-\newcommand{\cl}{\mathrm{Cl}\,}
-\newcommand{\inte}{\mathrm{Int}\,}
-\newcommand{\intem}{\mathrm{int}\,}
-\newcommand{\meja}{\mathrm{Meja}\,}
+\DeclareMathOperator{\cl}{Cl}
+\DeclareMathOperator{\inte}{Int}
+\DeclareMathOperator{\intem}{int}
+\DeclareMathOperator{\meja}{Meja}
 \DeclareMathOperator{\di}{d\!}
 
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace\hspace{0pt}}m{#1}}
@@ -450,7 +450,7 @@ $\quot{X}{\sim}$.
     Naj bo $X = \R$ in $A = \Z$ njegov edini netrivialni ekvivalenčni razred.
     Potem si lahko njegov kvocientni prostor $\quot{X}{\sim} = \quot{X}{A}$ predstavljamo
     kot števno neskončno mnogo krožnic, ki se sekajo v eni točki. 
-    Ta prostor pa ne moremo vložiti v nek evklidski prostor, saj ni Hausdorffov.
+    Ta prostor pa ne moremo vložiti v nek evklidski prostor, saj ni $2$-števen.
 \end{zgled}
 
 \begin{zgled}
